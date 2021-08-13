@@ -1,0 +1,81 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+:root {
+  --box-shadow-black: -1px -1px 2px rgba(255, 255, 255, 0.2) inset,
+    0 -2px 2px 3px rgba(0, 0, 0, 0.6) inset, 0 1px 2px rgba(0, 0, 0, 0.5);
+  --box-shadow-white: 2px 0 3px rgba(0, 0, 0, 0.1) inset,
+    -5px 5px 20px rgba(0, 0, 0, 0.2) inset, 0 0 3px rgba(0, 0, 0, 0.2);
+  --background-keys-black: linear-gradient(
+    to right,
+    rgb(32, 32, 32) 0%,
+    #222 100%
+  );
+  --background-keys-white: linear-gradient(to bottom, #fff 0%, #e9e9e9 100%);
+}
+
+.piano {
+  display: flex;
+}
+
+.key {
+  height: calc(var(--width) * 4);
+  width: var(--width);
+  border-radius: 0 0 5px 5px;
+}
+
+.white {
+  --width: 100px;
+  background: linear-gradient(to bottom, #eee 0%, #fff 100%);
+  border-left: 1px solid #bbb;
+  border-bottom: 1px solid #bbb;
+}
+
+.black {
+  --width: 60px;
+  background: linear-gradient(45deg, #222 0%, #555 100%);
+  margin-left: calc(var(--width) / -2);
+  margin-right: calc(var(--width) / -2);
+  z-index: 2;
+  filter: grayscale(60%);
+}
+
+.white:hover {
+  filter: contrast(90%);
+}
+
+.black:hover {
+  filter: contrast(80%);
+}
+
+.black:active {
+  background: var(--background-keys-black);
+  box-shadow: var(--box-shadow-black);
+}
+
+.white:active {
+  background: var(--background-keys-white);
+  box-shadow: var(--box-shadow-white);
+}
+
+.white.active {
+  background: var(--background-keys-white);
+  box-shadow: var(--box-shadow-white);
+}
+
+.black.active {
+  background: var(--background-keys-black);
+  box-shadow: var(--box-shadow-black);
+}
