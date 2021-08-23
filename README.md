@@ -1,1 +1,1 @@
-https://github.com/simple001100/piano/index.html
+https://simple001100.github.io/piano/
