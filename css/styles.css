@@ -11,6 +11,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 :root {
@@ -78,4 +79,65 @@ body {
 .black.active {
   background: var(--background-keys-black);
   box-shadow: var(--box-shadow-black);
+}
+
+.buttons {
+  display: flex;
+  --btn-title-record: block;
+  --btn-title-stop: none;
+}
+
+.btn {
+  width: 140px;
+  height: 50px;
+  margin-bottom: 20px;
+  font-size: 24px;
+  border-radius: 20px;
+  border-width: 0.2px;
+  border-color: #222;
+}
+
+.btn:active {
+  box-shadow: var(--box-shadow-black);
+}
+
+.record-button {
+  color: #eee;
+  --background-color-btn: #f57373;
+  background-color: var(--background-color-btn);
+}
+
+.record-button.active {
+  --background-color-btn: #ff1313;
+  --btn-title-record: none;
+  --btn-title-stop: block;
+}
+
+.record-button:before {
+  display: var(--btn-title-record);
+  content: "Record";
+}
+
+.record-button:after {
+  display: var(--btn-title-stop);
+  content: "Stop";
+}
+
+.record-button:hover {
+  --background-color-btn: #ff1313;
+}
+
+.play-button {
+  display: none;
+  color: #eee;
+  background-color: rgb(133, 207, 59);
+  padding: auto;
+}
+
+.play-button:hover {
+  filter: saturate(4);
+}
+
+.play-button.show {
+  display: block;
 }
