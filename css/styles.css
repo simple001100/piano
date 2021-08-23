@@ -4,16 +4,6 @@
   box-sizing: border-box;
 }
 
-body {
-  height: 100vh;
-  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
 :root {
   --box-shadow-black: -1px -1px 2px rgba(255, 255, 255, 0.2) inset,
     0 -2px 2px 3px rgba(0, 0, 0, 0.6) inset, 0 1px 2px rgba(0, 0, 0, 0.5);
@@ -25,6 +15,29 @@ body {
     #222 100%
   );
   --background-keys-white: linear-gradient(to bottom, #fff 0%, #e9e9e9 100%);
+  --coefficient: 1;
+}
+
+body {
+  height: 100vh;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+@media (max-width: 1024px) {
+  body {
+    --coefficient: 1.7;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    --coefficient: 2;
+  }
 }
 
 .piano {
@@ -38,14 +51,14 @@ body {
 }
 
 .white {
-  --width: 100px;
+  --width: calc(12vh / var(--coefficient));
   background: linear-gradient(to bottom, #eee 0%, #fff 100%);
   border-left: 1px solid #bbb;
   border-bottom: 1px solid #bbb;
 }
 
 .black {
-  --width: 60px;
+  --width: calc(7.2vh / var(--coefficient));
   background: linear-gradient(45deg, #222 0%, #555 100%);
   margin-left: calc(var(--width) / -2);
   margin-right: calc(var(--width) / -2);
@@ -88,13 +101,14 @@ body {
 }
 
 .btn {
-  width: 140px;
-  height: 50px;
+  width: 15vh;
+  height: 5.35vh;
   margin-bottom: 20px;
   font-size: 24px;
   border-radius: 20px;
   border-width: 0.2px;
   border-color: #222;
+  --font-size: 3vh;
 }
 
 .btn:active {
@@ -116,11 +130,13 @@ body {
 .record-button:before {
   display: var(--btn-title-record);
   content: "Record";
+  font-size: var(--font-size);
 }
 
 .record-button:after {
   display: var(--btn-title-stop);
   content: "Stop";
+  font-size: var(--font-size);
 }
 
 .record-button:hover {
@@ -131,7 +147,7 @@ body {
   display: none;
   color: #eee;
   background-color: rgb(133, 207, 59);
-  padding: auto;
+  font-size: var(--font-size);
 }
 
 .play-button:hover {
